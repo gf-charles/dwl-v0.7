@@ -33,7 +33,7 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "wbg", "~/media/photos/background.png", NULL,
+        "wbg", "/home/cgf/media/photos/background.png", NULL,
         "qutebrowser", NULL,
         "emacsclient", "-c", NULL,
         NULL /* terminate */
@@ -44,8 +44,8 @@ static const char *const autostart[] = {
 static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   isterm   noswallow   monitor */
 	/* examples: */
-	{ "qutebrowser",     NULL,       1 << 1,            0,           0,       0,          -1 }, /* Start on currently visible tags floating, not tiled */
-        { "emacsclient",     NULL,       1 << 0,            0,           0,       0,          -1 }
+    { "qutebrowser",     NULL,       1 << 1,            0,           0,       0,          0 }, /* Start on currently visible tags floating, not tiled */
+    { "emacsclient",     NULL,       1 << 0,            0,           0,       0,          0 }
 };
 
 /* layout(s) */

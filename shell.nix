@@ -14,6 +14,7 @@ pkgs.mkShell {
     libcap
     wlroots
     fcft
+    gdb
   ];
 
   nativeBuildInputs = with pkgs; [
