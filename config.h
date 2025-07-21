@@ -45,7 +45,7 @@ static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   isterm   noswallow   monitor */
 	/* examples: */
     { "qutebrowser",     NULL,       1 << 1,            0,           0,       0,          0 }, /* Start on currently visible tags floating, not tiled */
-    { "emacsclient",     NULL,       1 << 0,            0,           0,       0,          0 }
+    { "emacs",     NULL,       1 << 0,            0,           0,       0,          0 }
 };
 
 /* layout(s) */
