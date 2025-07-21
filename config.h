@@ -33,7 +33,9 @@ static int log_level = WLR_ERROR;
 
 /* Autostart */
 static const char *const autostart[] = {
-        "wbg", "/path/to/your/image", NULL,
+        "wbg", "~/media/photos/background.png", NULL,
+        "qutebrowser", NULL,
+        "emacsclient", "-c", NULL,
         NULL /* terminate */
 };
 
@@ -42,7 +44,8 @@ static const char *const autostart[] = {
 static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   isterm   noswallow   monitor */
 	/* examples: */
-	{ "qutebrowser",     NULL,       1 << 1,            1,           0,       0,          -1 }, /* Start on currently visible tags floating, not tiled */
+	{ "qutebrowser",     NULL,       1 << 1,            0,           0,       0,          -1 }, /* Start on currently visible tags floating, not tiled */
+        { "emacsclient",     NULL,       1 << 0,            0,           0,       0,          -1 }
 };
 
 /* layout(s) */
@@ -62,11 +65,12 @@ static const Layout layouts[] = {
 static const MonitorRule monrules[] = {
 	/* name       mfact  nmaster scale layout       rotate/reflect                x    y */
 	/* example of a HiDPI laptop monitor:
-	{ "eDP-1",    0.5f,  1,      2,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1,  -1 },
 	*/
 	/* defaults */
 	{ "VGA-1",       0.55f, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   0,  0 },
-	{ "LVDS-1",      0.55f, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   1920,  0 }
+	{ "LVDS-1",      0.55f, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   1920,  0 },
+	{ "eDP-1",        0.5f, 1,      2,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1, -1 },
+        {NULL,           0.55f, 1,      1,    &layouts[0], WL_OUTPUT_TRANSFORM_NORMAL,   -1, -1 }
 };
 
 /* keyboard */
@@ -124,7 +128,7 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 static const int cursor_timeout = 5;
 
 /* If you want to use the windows key for MODKEY, use WLR_MODIFIER_LOGO */
-#define MODKEY WLR_MODIFIER_ALT
+#define MODKEY WLR_MODIFIER_LOGO
 
 #define TAGKEYS(KEY,SKEY,TAG) \
 	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
